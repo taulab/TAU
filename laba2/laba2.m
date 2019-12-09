@@ -1,6 +1,3 @@
-%{
-   analytical part of calculations is displayed in comments
-%}
 syms s;
 
 Pl = s + 2;
