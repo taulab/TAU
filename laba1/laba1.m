@@ -8,7 +8,7 @@ W = tf(beta, alpha, T);
 beta1=[1];
 beta0=[1 1.48];
 r=2; %порядок астатизма
-k=sum(roots(alpha1) == 1) + sum(roots(alpha0) == 1) + sum(roots(beta1) == 1) + sum(roots(beta0) == 1);
+k=sum(roots(alpha1) == 1) + sum(roots(alpha0) == 1) + sum(roots(beta1) == 1) + sum(roots(beta0) == 1); %кратность корня z=1
 
 l=r-k;
 o =((length(alpha0)-1) + l - 1 - (length(beta1)-1) + (length(alpha)-1));
@@ -16,10 +16,15 @@ nv = 3;
 nm = 1;
 nn = 1;
 %их я ручками посчитала, потому что не поняла, как тут неравенства решать
-% z^3 = (m1*z + m0)*(z+1.48) + (n1*z + n0)*(z-1)*(z-1)
+% z^3 = (m1*z + m0)*(z+1.48) + (n1*z + n0)*(z-1)*(z-1) - решаем данное уравнение
+
+{%
+
+%}
+
 A = [[1 0 0 0]; [-2 1 1 0]; [1 -2 1.48 1]; [0 1 0 1.48]];
 B = [1 0 0 0];
-X = inv(A) * transpose(B);
+X = inv(A) * transpose(B);  
 n1 = X(1);
 n0 = X(2);
 m1 = X(3);
