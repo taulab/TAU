@@ -44,19 +44,15 @@ nrl = 1
 nrr = 1
 ng = 3
 
-by solving a system of inequalities we get 
+в результате решения системы получаем 
     nn = 0
     nm = 2
 
-as a result, 
-the functions N(s) and M(s) will take the following form:
 
 N(s) = a0
 M(s) = b0*s^2 + b1*s + b2
 
-to find the unknown coefficients we need to solve this equiation:
-
-    Pr*M(s) + Rr(s)*N*s^r == G(s)
+Pr*M(s) + Rr(s)*N*s^r == G(s)
 
 b0*s^2 + b1*s + b2 + c0*s^2*(s - 3)=a0*s^3 + a1*s^2 + a2*s + a3
 
@@ -68,29 +64,13 @@ r=2;
 N = 0.0027;
 M = (1655*s^2)/15552 + (127*s)/144 + 1;
 
-%{
-to find the transfer function we must use this formula:
     
-    Wp(s)=(Rl(s)*M(s))/(Pl(s)*N*s^r)
-
-%}
+    %    Wp(s)=(Rl(s)*M(s))/(Pl(s)*N*s^r)
 
 num2 = sym2poly(Rl*M);
 den2 = sym2poly(Pl * N * s^r);
 Wp = tf(num2, den2);
 
-%{
-Wp =
- 
-  0.1064 s^3 + 0.9884 s^2 + 1.882 s + 1
-  -------------------------------------
-       0.002679 s^3 + 0.005358 s^2
-
-
-we need to convert both functions
-from continuous time to discrete time:
-
-%}
 T = 0.01;
 
 Woz = c2d(Wo, T);
@@ -128,11 +108,4 @@ lsim(Weg,g1,t);
 subplot(3,1,3);
 lsim(Weg,g2,t);
 
-%{
-            output:
-
-settling_time =
-
-    0.2400
-
-%}
+%settling_time =  0.2400
