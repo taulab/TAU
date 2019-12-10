@@ -8,7 +8,23 @@ W = tf(beta, alpha, T);
 beta1=[1];
 beta0=[1 1.48];
 r=2; %порядок астатизма
-k=sum(roots(alpha1) == 1) + sum(roots(alpha0) == 1) + sum(roots(beta1) == 1) + sum(roots(beta0) == 1); %кратность корня z=1
+k=0; %кратность корня z=1
+B = transpose(roots(beta));
+AA = transpose(roots(alpha));
+
+for i=1:length(AA)
+    if (A(i)==1)
+        k = k+1;
+    end
+end
+
+for i=1:length(B)
+    if (B(i)==1)
+        k = k+1;
+    end
+end
+    
+display(k);
 
 l=r-k;
 o =((length(alpha0)-1) + l - 1 - (length(beta1)-1) + (length(alpha)-1));
