@@ -24,7 +24,7 @@ for i=1:length(B)
     end
 end
     
-display(k);
+% k = 1
 
 l=r-k;
 o =((length(alpha0)-1) + l - 1 - (length(beta1)-1) + (length(alpha)-1));
